@@ -19,7 +19,7 @@ def Print_Sorting(array):
         PlotGraph(res,title+" After Sorting")
 
 def PlotGraph(array,title):
-    plt.xlabel("Range")
+    plt.xlabel("Index")
     plt.ylabel("Elements")
     plt.title(title)
     plt.plot(range(len(array)),array)
