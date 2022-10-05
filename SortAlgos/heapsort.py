@@ -39,7 +39,7 @@ class Heap:
             self.downheap(i)
             i = i - 1
     
-    def heapsort(self,arr): #sorting using heap
+    def HeapSort(self,arr): #sorting using heap
         arraySize = len(arr)
         self.buildHeap(arr) #heapify's the given array
         for i in range(0,arraySize): 
@@ -53,7 +53,7 @@ class Heap:
 def main():
     heap = Heap()
     arr = list(map(int, input().split()))
-    print(heap.heapsort(arr))
+    print(heap.HeapSort(arr))
     
 if __name__ == '__main__':
     main() 
