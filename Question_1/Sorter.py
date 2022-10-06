@@ -17,7 +17,7 @@ def CreateAr():
     for size in range(100,50001,100):
         
         # Opening the file in write mode
-        with open("inputs/input_"+str(size)+".txt","w+") as f:
+        with open("../inputs/input_"+str(size)+".txt","w+") as f:
             
             # Generating the random data and storing into array
             array = [str(np.random.randint(1,size)) for i in range(size)]
@@ -32,7 +32,7 @@ def CreateAr():
 def GenerateAr(size = 10):
     
     # Opening the file in read mode
-    with open("inputs/input_"+str(size)+".txt","r") as f:  
+    with open("../inputs/input_"+str(size)+".txt","r") as f:  
 
         # Fetching the data from the file and storing into array
         array = [int(i.split("\n")[0]) for i in f.readlines()] 
@@ -49,7 +49,7 @@ def DoAnalyse(name,func,array):
     print("Sorting Array...")
     
     # Executing the function and invoking the timer
-    A.Timer(func,array)
+    A.Timer(func,array.copy())
     
     print("Array Sorted...")
     

@@ -2,6 +2,16 @@ from Analyser import Analyse        # User Defined Class to Analyse the Sorting 
 
 # A.mem is a function is used to calculate the size of the object 
 
+# An Updated Quick Sort Function which runs quick sort algorithm to threshhold point in the array
+# and runs an insertion sort for smaller sub arrays
+def Updated_QuickSort(array, A: Analyse):
+
+    # Threshhold value is defined as the 1/3 of the total array length
+    THRESHHOLD = A.divf(len(array),3)
+
+    # Calling actual Quick Sort
+    return A.ret(QuickSort(array,THRESHHOLD,A))
+
 # The Partition funtion which swaps elements with respect to left most element of the portion of array (In Place)
 # And returns new pivot
 def Partition(array: list, left: int, right: int,A: Analyse):
@@ -37,20 +47,41 @@ def Partition(array: list, left: int, right: int,A: Analyse):
     return A.add(i)   
 
 # Base Recursive Quicksort function which do actual partition and sorting through recursion 
-def QuickSort(array: list, A: Analyse, left = 0, right = None) -> list:
+def QuickSort(array: list,THRESHOLD: int, A: Analyse, left = 0, right = None) -> list:
     
     A.mem(array)
     
     if right is None: right = A.sub(len(array))
     
     # Comparing the left and right pointer
-    if(A.comparelt(left, right)):
-        #Partitioning the array and gaining the new pivot value
+    if (A.sub(right,left) > THRESHOLD):
+        # Partitioning the array and gaining the new pivot value
         pivot = Partition(array, left, right, A)
 
         # Quick Sort for left sub array
-        QuickSort(array,A,left,A.sub(pivot))
+        QuickSort(array,THRESHOLD,A,left,A.sub(pivot))
         # Quick Sort for right sub array 
-        QuickSort(array,A,A.add(pivot),right)
+        QuickSort(array,THRESHOLD,A,A.add(pivot),right)
     
+    elif (A.comparelt(left,right)):
+        # Insertion Sort
+
+        # Iterating from 1 to n
+        for i in range(left,right+1): 
+            
+            min = A.ret(array[i])
+            
+            # Previous element to i
+            j = A.sub(i)  
+
+            # Takes the elements which are greater than min
+            while (A.comparegt(j,left) or A.equate(j,left)) and (A.comparelt(min,array[j])): 
+                
+                # Swaps the elements to one position forward
+                array[j+1] = A.ret(array[j])
+                j = A.sub(j)
+            
+            # Keeps the element next to smallest number
+            array[j+1] = A.ret(min) 
+            
     return A.ret(array)

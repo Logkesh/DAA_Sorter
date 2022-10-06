@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt         # For Displaying results in graphs
 import numpy as np                      # To Generate Random Inputs 
 
-from Analyser import Analyse            # User Defined Class to Analyse the Sorting Alogorithm 
+from Analyser import Analyse            # User Defined Class to Analyse the Sorting Algorithm 
 
-from quicksort import QuickSort         # Quick Sort Function
-from timsort import MergeSort           # Tim Sort Function
+from updatedquicksort import Updated_QuickSort         # Updated Quick Sort Function
+from timsort import TimSort                   # Tim Sort Function
 
 # Creates an array with shuffeled random numbers
 # Used to create input files
@@ -122,12 +122,13 @@ def Sort_Testing(func,sort,size = 200):
 def main():
     
     # Sorting functions and analysed features
-    func = {"QuickSort":QuickSort,"MergeSort":MergeSort}
+    func = {"QuickSort":Updated_QuickSort,"TimSort":TimSort}
     group = ["time","swap","compare","basicop","mem"]
     sort = list(func.keys())
     
     # Testing the Algorithms using sample data before execution
     Sort_Testing(func,sort)
+    
     
     # invoking all funtions
     ReadyStorage(sort,group)
@@ -137,6 +138,7 @@ def main():
         Print_Sorting(array,func)
     
     PlotAnalysis(sort,group)
+
     
 if __name__ == "__main__":
     main()
