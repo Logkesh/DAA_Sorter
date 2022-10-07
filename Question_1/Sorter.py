@@ -14,7 +14,7 @@ from insertionsort import InsertionSort # Insertion Sort Function
 def CreateAr():
 
     # Generating random arrays from size 100 to size 75000 with the interval value of 100 
-    for size in range(100,50001,100):
+    for size in range(100,10001,100):
         
         # Opening the file in write mode
         with open("../inputs/input_"+str(size)+".txt","w+") as f:
@@ -138,7 +138,7 @@ def main():
     # invoking all funtions
     ReadyStorage(sort,group)
     
-    for n in range(100,50001,100):
+    for n in range(100,10001,100):
         array = GenerateAr(n)
         Print_Sorting(array,func)
     

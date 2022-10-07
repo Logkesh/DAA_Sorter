@@ -17,6 +17,7 @@ def InsertionSort(arr, A: Analyse):
             
             # Swaps the elements to one position forward
             arr[j+1] = A.ret(arr[j])
+            
             j = A.sub(j)
         
         # Keeps the element next to smallest number
